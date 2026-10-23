@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5653e03fa70247afbfce168bd36cd16a" Name="Diagram1">
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Category" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Order" Width="1.5" PointX="10.375" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Order_Details" Width="1.5" PointX="5.25" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Order_Status" Width="1.5" PointX="10.5" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Pickup_Points" Width="1.5" PointX="8.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Product_Name" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Provider" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.Supplier" Width="1.5" PointX="3.875" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.User" Width="1.5" PointX="8.125" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoeStore_OreshkovModel.User_Roles" Width="1.5" PointX="8.125" PointY="6.25" IsExpanded="true" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Product__ID_Cate__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Order__ID_Order___4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Order__ID_Pickup__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Order__ID_User__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Order_Det__ID_Or__52593CB8" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Order_Det__ID_Ar__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Product__ID_Prod__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Product__ID_Prov__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__Product__ID_Supp__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="ShoeStore_OreshkovModel.FK__User__ID_Role__44FF419A" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

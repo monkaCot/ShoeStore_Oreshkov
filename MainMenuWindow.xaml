@@ -1,0 +1,184 @@
+﻿<Window x:Class="ShoeStore_Oreshkov.MainMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeStore_Oreshkov"
+        mc:Ignorable="d"
+        Title="ООО тмыв денег" Height="700" Width="880" >
+    
+    <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="55"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+
+
+        <Border Grid.Row="1" Grid.Column="1" Background="#7FFF00" CornerRadius="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="280"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal"
+                    VerticalAlignment="Center" Margin="5,0,0,0">
+                    <Button x:Name="LogoutButton" Content="Выйти из системы"
+                    FontFamily="Times New Roman" FontSize="14"
+                    Padding="10,5" Click="LogoutButton_Click"/>
+                    <Button x:Name="OrdersButton" Content="Заказы"
+                    FontFamily="Times New Roman" FontSize="14"
+                    Padding="10,5" Margin="5,0,0,0"
+                    Click="OrdersButton_Click" Visibility="Hidden"/>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Image Source="Icon.png" Height="50" Width="50" VerticalAlignment="Center" />
+                    <TextBlock Text="ООО Обувь" FontSize="32" FontWeight="Bold"
+                       Margin="15,0,0,0" FontFamily="Times New Roman"
+                       VerticalAlignment="Center"/>
+                </StackPanel>
+
+                <TextBlock Grid.Column="2" x:Name="FIO" Text="ФИО Пользователя"
+                   FontSize="14" FontFamily="Times New Roman"
+                   VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="3" Grid.Column="1" Background="#7FFF00" CornerRadius="8">
+            <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="185"/>
+
+                    <ColumnDefinition Width="210"/>
+
+                    <ColumnDefinition Width="170"/>
+
+                    <ColumnDefinition Width="170"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name="Search" Orientation="Horizontal" Grid.Column="0" Visibility="Hidden">
+                <TextBlock Text="Поиск:"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,0,0,0"/>
+                <TextBox x:Name="SearchTextBox" Width="125" Height="25" Margin="10,10,10,10" VerticalContentAlignment="Center" SelectionChanged="SearchTextBox_SelectionChanged"/>
+                </StackPanel>
+
+                <GroupBox x:Name="GroupBoxSort" Grid.Column="1" Header="Сортировка(по колву на складе)"  VerticalAlignment="Center" Visibility="Hidden">
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="SortAscButton" Content="По возрастанию" Margin="5,10" Click="SortAscButton_Click"/>
+                        <Button x:Name="SortDownButton" Content="По убыванию" Margin="5,10" Click="SortDownButton_Click"/>
+                    </StackPanel>
+                </GroupBox>
+                
+                <StackPanel Name="PostSort" Orientation="Horizontal" Grid.Column="2" Visibility="Hidden">
+                    <TextBlock Text="Поcтавщик:"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"/>
+                    <ComboBox x:Name="FilterComboBox" Width="90" Height="25" Margin="10,10,0,10" VerticalContentAlignment="Center" SelectionChanged="FilterComboBox_SelectionChanged"
+                    DisplayMemberPath="SupplierName"
+                    SelectedValuePath="ID_Supplier"/>
+                </StackPanel>
+                
+                <Button x:Name="ResetButton" Grid.Column="3" Width="165" Content="Сбросить все фильтры" FontFamily="Times New Roman" FontSize="14" VerticalAlignment="Center"  Padding="10,5" Visibility="Hidden" Click="ResetButton_Click"/>
+            </Grid>
+        </Border>
+
+        <ListView Name="TovarList" Grid.Row="4" Grid.Column="1" MouseDoubleClick="TovarList_MouseDoubleClick">
+            <ListView.ItemContainerStyle>
+                <Style TargetType="ListViewItem">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding IsOnDiscount}" Value="True">
+                            <Setter Property="Background" Value="#2E8B57"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsInStock}" Value="True">
+                            <Setter Property="Background" Value="cyan"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="2" Margin="5" BorderBrush="Black">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="440"/>
+                                <ColumnDefinition Width="160"/>
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderThickness="2" Margin="5" BorderBrush="Black">
+                                <Image Source="{Binding Photo}" Margin="10" Width="120"/>
+                            </Border>
+                            <Border Grid.Column="1" BorderThickness="1" BorderBrush="Black" Margin="5">
+                                <StackPanel Margin="5" Orientation="Vertical">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Category.CategoryName}" FontWeight="Bold"/>
+                                        <TextBlock Text=" | " FontWeight="Bold"/>
+                                        <TextBlock Text="{Binding Product_Name.TovarName}" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Описание товара: "/>
+                                        <TextBlock Text="{Binding Description}" TextWrapping="Wrap"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Производитель: "/>
+                                        <TextBlock Text="{Binding Provider.ProviderName}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Поставщик: "/>
+                                        <TextBlock Text="{Binding Supplier.SupplierName}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Цена: "/>
+                                        <TextBlock Text="{Binding price}">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsOnSale}" Value="True">
+                                                            <Setter Property="Foreground" Value="Red"/>
+                                                            <Setter Property="TextDecorations" Value="Strikethrough"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                        <TextBlock Margin="5 0 0 0" Text="{Binding priceDiscount, StringFormat=Новая цена: {0} руб.}" FontWeight="Bold"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Единица измерения: "/>
+                                        <TextBlock Text="{Binding MeasureUnit}"/>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="Количество на складе: "/>
+                                        <TextBlock Text="{Binding InStock}"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="2" BorderThickness="1" BorderBrush="Black" Margin="5">
+                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+
+                                    <TextBlock Text="{Binding Sale}" TextWrapping="Wrap" TextAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button x:Name="AddTovarButton" Content="Добавить товар" Width="140" Height="30" Margin="0,0,10,0"
+            FontFamily="Times New Roman" FontSize="14" Click="AddTovarButton_Click" Visibility="Hidden"/>
+            <Button x:Name="DeleteTovarButton" Content="Удалить товар" Width="140" Height="30"
+            FontFamily="Times New Roman" FontSize="14" Click="DeleteTovarButton_Click" Visibility="Hidden"/>
+        </StackPanel>
+
+    </Grid>
+</Window>

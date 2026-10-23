@@ -1,0 +1,81 @@
+﻿<Window x:Class="ShoeStore_Oreshkov.AddEditTovarWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ShoeStore_Oreshkov"
+        mc:Ignorable="d"
+        Title="добавление\редактирование товара" Height="550" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"/> <!--0-->
+            <RowDefinition Height="50"/> <!--1-->
+            <RowDefinition Height="30"/> <!--2-->
+            <RowDefinition Height="30"/> <!--3-->
+            <RowDefinition Height="30"/> <!--4-->
+            <RowDefinition Height="30"/> <!--5-->
+            <RowDefinition Height="30"/> <!--6-->
+            <RowDefinition Height="30"/> <!--7-->
+            <RowDefinition Height="30"/> <!--8-->
+            <RowDefinition Height="30"/> <!--9-->
+            <RowDefinition Height="30"/> <!--10-->
+            <RowDefinition Height="30"/> <!--11-->
+            <RowDefinition Height="30"/> <!--12-->
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Row="0" Grid.ColumnSpan="2" Background="#7FFF00">
+            <TextBlock Text="Управление товаром" FontSize="32" FontFamily="Times New Roman" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        </Border>
+
+        <TextBlock Text="Фото товара" Grid.Row="1" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="10 0 0 0" >
+            <Image Name="TovarImage" Source="/picture.png" Height="50" Width="50" HorizontalAlignment="Left"/>
+            <StackPanel Orientation="Vertical" Margin="15 0 0 0" Width="150">
+                <Button Name="SelectImageButton" Content="Выбрать изображение" Width="150" Margin="0 4 0 0" Click="SelectImageButton_Click"/>
+                <TextBox x:Name="SelectedImageName" Text="название изображения" Margin="0 4 0 0" Width="150" IsEnabled="False"/>
+            </StackPanel>
+        </StackPanel>
+
+        <TextBlock Text="Наименование товара" Grid.Row="2" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="TovarNameTextbox" Grid.Row="2" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+        <TextBlock Text="Категория товара" Grid.Row="3" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <ComboBox Name="CategoryCombobox" Grid.Row="3" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"
+        DisplayMemberPath="CategoryName"
+        SelectedValuePath="ID_Category"/>
+
+        <TextBlock Text="Описание товара" Grid.Row="4" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="DescriptionTextbox" Grid.Row="4" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+        <TextBlock Text="Производитель товара" Grid.Row="5" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <ComboBox Name="ProviderCombobox" Grid.Row="5" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"
+        DisplayMemberPath="ProviderName"
+        SelectedValuePath="ID_ProviderName"
+                  />
+
+        <TextBlock Text="Поставщий товара" Grid.Row="6" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <ComboBox Name="SupplierCombobox" Grid.Row="6" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"
+        DisplayMemberPath="SupplierName"
+        SelectedValuePath="ID_Supplier"
+                  />
+
+        <TextBlock Text="Цена товара" Grid.Row="7" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="PriceTextbox" Grid.Row="7" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+        <TextBlock Text="Еденица измерения товара" Grid.Row="8" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="MeasureTextbox" Grid.Row="8" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+        <TextBlock Text="Количество товара на складе" Grid.Row="9" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="InStockNumberTextbox" Grid.Row="9" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+
+        <TextBlock Text="Действующая скидка" Grid.Row="10" Grid.Column="0" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 10 0"/>
+        <TextBox Name="SaleTextbox" Grid.Row="10" Grid.Column="1" Height="20" Width="215" HorizontalAlignment="Left" Margin="10 0 0 0"/>
+        
+        <Button Name="SaveButton"  Content="Сохранить" Grid.Row="11" Grid.ColumnSpan="2"  Width="150" FontSize="16" FontFamily="Times New Roman" VerticalAlignment="Center" HorizontalAlignment="Center" Click="SaveButton_Click" />
+    </Grid>
+</Window>
